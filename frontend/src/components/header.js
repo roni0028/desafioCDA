@@ -10,10 +10,11 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 
+//<Header user={user} />
 
-export default function Header() {
+export default function Header(user) {
+  console.log(user)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
 
   return (
     <header className="bg-gray-900">
