@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-//submit form
 import axios from 'axios';
 import { useState } from 'react'
-
 
 export default function Login() {
     const [email, setEmail] = useState('')

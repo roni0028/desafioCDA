@@ -8,12 +8,15 @@ import {
 } from 'react-router-dom';
 import axios from 'axios';
 
-
 import Home from './pages/home';
 import Vip from './pages/vip';
 import News from './pages/noticias';
 import Login from './pages/login';
 import Register from './pages/register';
+import Logout from './pages/logout';
+import Profile from './pages/profile';
+import ConfigUser from './pages/config';
+import Emblems from './pages/emblems';
 
 function hasJWT() {
   let flag = false;
@@ -30,6 +33,7 @@ export default function App() {
     async function fetchUser() {
       try {
         if (!localStorage.getItem('token')) {
+          setUser(null);
           return;
         }
 
@@ -57,6 +61,10 @@ export default function App() {
         <Route path="/news" element={hasJWT() ? <News /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={hasJWT() ? <Profile user={user} /> : <Navigate to="/login" />} />
+        <Route path="/config" element={hasJWT() ? <ConfigUser user={user} /> : <Navigate to="/login" />} />
+        <Route path="/emblems" element={hasJWT() ? <Emblems user={user} /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

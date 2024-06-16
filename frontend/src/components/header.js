@@ -10,10 +10,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 
-//<Header user={user} />
-
 export default function Header(user) {
-  console.log(user)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
@@ -57,11 +54,25 @@ export default function Header(user) {
             CONTATO
           </a>
         </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="/login" className="text-sm font-semibold leading-6 text-white">
-            ENTRAR <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+        {user.user ? (
+          <>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <a href="/profile" className="text-sm font-semibold leading-6 text-white">
+                PERFIL
+              </a>
+
+              <a href="/logout" className="text-sm font-semibold leading-6 text-white ml-4">
+                SAIR
+              </a>
+            </div>
+          </>
+        ) : (
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="/login" className="text-sm font-semibold leading-6 text-white">
+              ENTRAR <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        )}
       </nav>
       <Dialog className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
