@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import axios from 'axios';
 import { useState } from 'react'
 import { UserCircleIcon } from '@heroicons/react/24/solid'
